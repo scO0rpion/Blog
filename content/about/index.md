@@ -4,7 +4,8 @@ title: About The Author
 ---
 
 ## About Me
-<img src="images/navid.png" />
+
+![me](/images/navid.png)
 
 My name is Navid Ardeshir and I am a Statistics Ph.D. student at [Columbia University](http://stat.columbia.edu) who has a strong desire to explore mathematical objects beyond my level of understanding. I earned my bachelors in Electrical Engineering at Sharif University which had the wonderful opportunity to work with [Kasra Alishahi](http://math.sharif.ir/faculties/alishahi) and [Amin Gohari](http://sharif.ir/~aminzadeh/). 
 
