@@ -1,0 +1,13 @@
+---
+title: ye poste alaki
+author: ''
+date: '2020-08-16'
+slug: ye-poste-alaki
+categories: []
+tags: []
+draft: yes
+mathjax: true
+---
+
+# Heading
+This is a new post. This is a $\pi$
