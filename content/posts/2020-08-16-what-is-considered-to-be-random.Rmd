@@ -10,7 +10,6 @@ tags:
   - Statistics
   - Logic
   - Philosophy
-draft: yes
 ---
 
 We all have heard of prominent artists such as [Jackson Pollock](https://en.wikipedia.org/wiki/Jackson_Pollock) that at first sight on their work did not appreciate the complexity and level of intricacy in their pieces. One, without taste of art (and math!) might foolishly claim that they can reproduce similar patterns since there are actually none! It looks random. but what does "random" actually mean?^[A rigorous explanation can be found [here](https://www.maa.org/sites/default/files/pdf/upload_library/22/Ford/Volchan46-63.pdf)] A word that has been thrown around carelessly in daily life which contain variety of meanings. If you think about it really, it's not so obvious how to actually define "random" rigorously and it's been a matter of debate for a long time in probability theory. 
