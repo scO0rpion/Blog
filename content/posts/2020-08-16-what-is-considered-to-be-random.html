@@ -12,6 +12,7 @@ tags:
   - Philosophy
 ---
 
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
 <p>We all have heard of prominent artists such as <a href="https://en.wikipedia.org/wiki/Jackson_Pollock">Jackson Pollock</a> that at first sight on their work did not appreciate the complexity and level of intricacy in their pieces. One, without taste of art (and math!) might foolishly claim that they can reproduce similar patterns since there are actually none! It looks random. but what does “random” actually mean?<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> A word that has been thrown around carelessly in daily life which contain variety of meanings. If you think about it really, it’s not so obvious how to actually define “random” rigorously and it’s been a matter of debate for a long time in probability theory.</p>
@@ -32,7 +33,7 @@ tags:
 </div>
 <div id="a-rigorous-attempt-to-define-randomness" class="section level2">
 <h2>A Rigorous Attempt to Define Randomness</h2>
-<p>Suppose <span class="math inline">\(\Omega=\{0,1\}^\mathbb{N}\)</span> be the outcome space associated to the sequence of a coin tossed infinitely many times, denoted as <span class="math inline">\(X_1,X_2, \dots\)</span>. Indeed, we assume trials are performed independently, i.e. <span class="math inline">\((X_n)_{n\ge1}\)</span> are independent random variables.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> It is common to consider independence provides chaos in the sequence and makes it irregular since there are no sensible dependency among the variables, however it’s the very thing that adds some sort of limiting structure to the sequence. This structure ensures that a random sequence must satisfy some sort of frequency stability condition, and suggests to define randomness upon this crucial condition. The necessity of this condition is evident, however the more serious question is “Is this property sufficient?”.</p>
+<p>Suppose <span class="math inline">\(\Omega=\{0,1\}^\mathbb{N}\)</span> be the outcome space associated to the sequence of a coin tossed infinitely many times, denoted as <span class="math inline">\(X_1,X_2, \dots\)</span>. Indeed, we assume trials are performed independently, i.e. <span class="math inline">\((X_n)_{n\ge1}\)</span> are independent random variables.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> It is common to consider independence provides chaos in the sequence and makes it irregular since there are no sensible dependency among the variables, however it’s the very thing that adds some sort of limiting structure to the sequence. This structure ensures that a random sequence must satisfy some sort of frequency stability condition, and suggests to define randomness upon this crucial condition. The necessity of this condition is evident, however the more appropriate question is “Is this property sufficient?”.</p>
 <p><strong>Deifinition.</strong> A binary sequence <span class="math inline">\(X=(X_n)_{n \ge 1}\)</span> is considered to be random if it has the following properties:</p>
 <ul>
 <li>(<em>Frequency Stability</em>) let <span class="math inline">\(f_n = X_1 + \dots+X_n\)</span> be the number of 1s among first <span class="math inline">\(n\)</span> terms. Then:
@@ -49,8 +50,8 @@ exists and <span class="math inline">\(0&lt;p&lt;1\)</span>.</li>
 <span class="math display">\[\{H,T,H,H,H,H,T,H,T,T,H,T,H,H,H,H,H,T,H,T,T,T,T,T,T\}\]</span>
 These type of questions are rather difficult to answer in a polarized manner. However, there are quantitative methods to answer them in a spectrum. In statistics, we usually call it <em>Hypothesis Testing</em> which itself has a long history. Psychologists found that people’s notion of randomness is rather biased in the sense that they see streaks in a truly random sequence and expect more alternation, or shorter runs, than are there. They tend to pay more attention toward frequency stability rather than other features. This phenomena makes sense in a way that the actual mathematical definition relies heavily on frequency stability but the issue is you are provided with only a partial sequence and not an infinite one. This is the part that you have to be more clever and extract some extra features to make your final judgment.</p>
 <div id="streaks-of-what-length-should-we-expect-in-a-random-sequence-of-length-n" class="section level3">
-<h3>Streaks of What Length Should We Expect In a Random Sequence of Length n?</h3>
-<p>Let us define stopping time <span class="math inline">\(T_{k}\)</span> to be the first time that we observed a streak of ones with length <span class="math inline">\(k\)</span> in our infinite sequence. Therefore, one should expect existence of streaks with length <span class="math inline">\(k\)</span> in a sequence of length <span class="math inline">\(\mathbb{E}[T_{k}]\)</span>. For the sake of clarity, let us also define <span class="math inline">\(\mathcal{F}_{T_k}\)</span> to be filtration up to stopping time <span class="math inline">\(T_{k}\)</span>, i.e. <span class="math inline">\(\mathcal{F}_{T_k} = \sigma(X_1,\dots,X_{T_k})\)</span>. Then, we have the following:
+<h3>Streaks of What Length Should we Expect In a Random Sequence of Length n?</h3>
+<p>Let us define stopping time <span class="math inline">\(T_{k}\)</span> to be the first time that we observe a streak of ones with length <span class="math inline">\(k\)</span> in our infinite sequence. Therefore, one should expect existence of streaks with length <span class="math inline">\(k\)</span> in a sequence of length <span class="math inline">\(\mathbb{E}[T_{k}]\)</span>. For the sake of clarity, let us also define <span class="math inline">\(\mathcal{F}_{T_k}\)</span> to be filtration up to stopping time <span class="math inline">\(T_{k}\)</span>, i.e. <span class="math inline">\(\mathcal{F}_{T_k} = \sigma(X_1,\dots,X_{T_k})\)</span>. Then, we have the following:
 <span class="math display">\[ \mathbb{E}[T_k|\mathcal{F}_{T_{k-1}}] = \frac{1}{2}(1+T_{k-1}) + \frac{1}{2}(1+T_{k-1} + \mathbb{E}[T_k])\]</span>
 This is due to the fact that a streak of length <span class="math inline">\(k-1\)</span> must occur before than a streak of length <span class="math inline">\(k\)</span>. Therefore, at time <span class="math inline">\(T_{k-1}+1\)</span> either we are done by observing a 1 or everything resets to a new sequence by observing a 0.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> Now by taking expectations from both sides we obtain this recursive equation:</p>
 <p><span class="math display">\[ \mathbb{E}[T_k] = 2(1+\mathbb{E}[T_{k-1}])\]</span>
@@ -58,7 +59,46 @@ With initial condition $T_{0} = 0 $ which has this solution:</p>
 <p><span class="math display">\[ \mathbb{E}[T_k] = 2^{k+1}-2 \]</span></p>
 <p>At this point, an interesting question would be whether this random variable is concentrated around it’s mean or not? if so, how well? Apparently this does not seem to be true and <span class="math inline">\(T_{k}\)</span> tends to have a heavy tailed distribution.</p>
 <p><img src="/posts/2020-08-16-what-is-considered-to-be-random_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p>In conclusion, one should expect a streak of length <span class="math inline">\(\log_2(n)\)</span> in a fair random sequence and</p>
+<p>In conclusion, one should expect a streak of length <span class="math inline">\(\log_2(n)\)</span> in a fair random sequence. Thus, for those of you who was suspicious toward the second provided sequence due to long runs, I must say you were wrong.</p>
+</div>
+<div id="wald-and-wolfowitz-test" class="section level3">
+<h3>Wald and Wolfowitz Test</h3>
+<p>Myriad number of tests were developed to quantify randomness in a sequence. After all, this is an important problem since fields such as cryptography relies heavily on the randomness assumption which guarantees existence of codes that are intractable to break. Some tests are based on the longest run in the sequence, while others as in Wald and Wolfowitz test are based on the number of runs.</p>
+<p>Instead of binary, let us assume <span class="math inline">\(\Omega = \{+1,-1\}^\infty\)</span> which allows us to easily detect changes in the sequence. Thus, we can define <span class="math inline">\(R_n\)</span> to be the number of runs in a sequence of length <span class="math inline">\(n\)</span> and can be expressed explicitly in the following way:</p>
+<p><span class="math display">\[ R_{n} = 1 + \sum_{t=2}^{n}{\frac{1-X_{t}X_{t-1}}{2}} \]</span>
+Note that <span class="math inline">\(R_{n}\)</span> consist of sums of <span class="math inline">\(n-1\)</span> independent random variables, and therefore CLT can be applied. Subsequently, one can design a test to reject the null hypothesis <span class="math inline">\(H_0\)</span> when the following statistics is too large in absolute value and obtain a p-value.
+<span class="math display">\[ \frac{R_n - \mathbb{E}[R_n]}{Var(R_n)} = \frac{1}{\sqrt{n-1}}\sum_{t=2}^{n}{X_{t}X_{t-1}} \overset{n \mapsto \infty}{\longrightarrow} \mathcal{N}(0,1) \]</span></p>
+Now, if we apply this test to the given sequences we observe that the latter looks to be significantly more random than the former which is counter-intuitive.
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+First.Sequnce
+</th>
+<th style="text-align:right;">
+Second.Sequnce
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+P Value
+</td>
+<td style="text-align:right;">
+0.0412268
+</td>
+<td style="text-align:right;">
+0.6830914
+</td>
+</tr>
+</tbody>
+</table>
+<p>This does not necessarily mean, our test was wrong or we got bad luck, but could simply mean that our intuition is not fully aligned with the intended notion of randomness. As much as human perception of randomness could be biased, generating something that looks random is difficult. It is also worth mentioning that this entire discussion was 1-dimensional and mainly focused on 1-dimensional local features such as streaks. However, one should expect novel and astonishing phenomena to occur even in 2-dimensions since human intuition is now equipped with 2-dimensional local neighborhood.</p>
+<p><img src="/posts/2020-08-16-what-is-considered-to-be-random_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+Phenomena such as percolation which states that there is a path from center to the border of a random 2-dimensional matrix with black and white pixels is of particular interest to me and I’ll write about them in the near future.</p>
 </div>
 </div>
 <div class="footnotes">
@@ -66,7 +106,7 @@ With initial condition $T_{0} = 0 $ which has this solution:</p>
 <ol>
 <li id="fn1"><p>A rigorous explanation can be found <a href="https://www.maa.org/sites/default/files/pdf/upload_library/22/Ford/Volchan46-63.pdf">here</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p><a href="http://www.columbia.edu/~pg2113/index_files/Gorroochurn-Some%20Laws.pdf">Some Laws and Problems of Classical Probability and How Cardano Anticipated Them</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>It is fair to say independence itself is not well defined in practice. Do we mean to conduct our experiment with exact same conditions? Shouldn’t that make the outcome identical to the previous experiment? This is indeed a matter of debate in philosophy of probability and I don’t have unified answer to it.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>It is fair to say independence itself is not well defined in practice. Do we mean to conduct our experiment with exact same conditions? Shouldn’t that make the outcome identical to the previous experiment? This is indeed a matter of debate in philosophy of probability, and frankly, don’t know the answer to it.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p>A pedantic reader might also be skeptical about this statement since it’s not trivial to define independence over an infinite collection of random variables and it’s true. It requires further knowledge in measure theory but for now consider it means every finite sub-collection should be independent<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
 <li id="fn5"><p>This reset argument is rather technical and it’s due to the Strong Markov Property of discrete Markov Chains which states that <span class="math inline">\((X_{T+n})_{n \ge 1}\)</span> is again a Markov Chain with the same transition probability provided that <span class="math inline">\(T\)</span> is a stopping time.<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
 </ol>

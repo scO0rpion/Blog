@@ -21,13 +21,13 @@ Historically, probability has it's roots in gambling and safe to say that its cl
 ## What Does Probability of an Event Mean in Practise?
 #### A circular approach
 
-What do we mean by having a fair coin? Well, one explanation is that the outcome of the tossed coin is unpredictable to us and we have no preference over each side. This statement, although true, is nevertheless subjective and one might even say they do have the capability to predict the outcome. How can we fact check that? Naturally, one would replicate the experiment multiple times and somehow compare the predicted and real outcomes. This is the point where things get a little circular. In order to give universal meaning to probability you need multiple outcomes of that coin tossing experiment with the same randomness; In other words, generated independently and identically. Randomness is only practically meaningful through replication and that was the main motivation to define it theoretically in such a way to conform to this idea.^[It is fair to say independence itself is not well defined in practice. Do we mean to conduct our experiment with exact same  conditions? Shouldn't that make the outcome identical to the previous experiment? This is indeed a matter of debate in philosophy of probability and I don't have unified answer to it.]
+What do we mean by having a fair coin? Well, one explanation is that the outcome of the tossed coin is unpredictable to us and we have no preference over each side. This statement, although true, is nevertheless subjective and one might even say they do have the capability to predict the outcome. How can we fact check that? Naturally, one would replicate the experiment multiple times and somehow compare the predicted and real outcomes. This is the point where things get a little circular. In order to give universal meaning to probability you need multiple outcomes of that coin tossing experiment with the same randomness; In other words, generated independently and identically. Randomness is only practically meaningful through replication and that was the main motivation to define it theoretically in such a way to conform to this idea.^[It is fair to say independence itself is not well defined in practice. Do we mean to conduct our experiment with exact same  conditions? Shouldn't that make the outcome identical to the previous experiment? This is indeed a matter of debate in philosophy of probability, and frankly, don't know the answer to it.]
 
 >This sort of argument is analogous to say 1 object is only meaningful if there exists 2 of them besides together, moreover 1+1=2. Thus, 1 is tied to the whole integer system and they are not meaningful individually.
 
 ## A Rigorous Attempt to Define Randomness
 
-Suppose $\Omega=\{0,1\}^\mathbb{N}$ be the outcome space associated to the sequence of a coin tossed infinitely many times, denoted as $X_1,X_2, \dots$. Indeed, we assume trials are performed independently, i.e. $(X_n)_{n\ge1}$ are independent random variables.^[A pedantic reader might also be skeptical about this statement since it's not trivial to define independence over an infinite collection of random variables and it's true. It requires further knowledge in measure theory but for now consider it means every finite sub-collection should be independent] It is common to consider independence provides chaos in the sequence and makes it irregular since there are no sensible dependency among the variables, however it's the very thing that adds some sort of limiting structure to the sequence. This structure ensures that a random sequence must satisfy some sort of frequency stability condition, and suggests to define randomness upon this crucial condition. The necessity of this condition is evident, however the more serious question is "Is this property sufficient?".
+Suppose $\Omega=\{0,1\}^\mathbb{N}$ be the outcome space associated to the sequence of a coin tossed infinitely many times, denoted as $X_1,X_2, \dots$. Indeed, we assume trials are performed independently, i.e. $(X_n)_{n\ge1}$ are independent random variables.^[A pedantic reader might also be skeptical about this statement since it's not trivial to define independence over an infinite collection of random variables and it's true. It requires further knowledge in measure theory but for now consider it means every finite sub-collection should be independent] It is common to consider independence provides chaos in the sequence and makes it irregular since there are no sensible dependency among the variables, however it's the very thing that adds some sort of limiting structure to the sequence. This structure ensures that a random sequence must satisfy some sort of frequency stability condition, and suggests to define randomness upon this crucial condition. The necessity of this condition is evident, however the more appropriate question is "Is this property sufficient?".
 
 **Deifinition.** A binary sequence $X=(X_n)_{n \ge 1}$ is considered to be random if it has the following properties:
 
@@ -46,9 +46,9 @@ $$\{H,T,H,H,T,H,T,H,H,H,T,H,T,H,H,T,H,H,T,T,H,T,H,H,T\}$$
 $$\{H,T,H,H,H,H,T,H,T,T,H,T,H,H,H,H,H,T,H,T,T,T,T,T,T\}$$
 These type of questions are rather difficult to answer in a polarized manner. However, there are quantitative methods to answer them in a spectrum. In statistics, we usually call it *Hypothesis Testing* which itself has a long history. Psychologists found that people's notion of randomness is rather biased in the sense that they see streaks in a truly random sequence and expect more alternation, or shorter runs, than are there. They tend to pay more attention toward frequency stability rather than other features. This phenomena makes sense in a way that the actual mathematical definition relies heavily on frequency stability but the issue is you are provided with only a partial sequence and not an infinite one. This is the part that you have to be more clever and extract some extra features to make your final judgment.
 
-### Streaks of What Length Should We Expect In a Random Sequence of Length n?
+### Streaks of What Length Should we Expect In a Random Sequence of Length n?
 
-Let us define stopping time $T_{k}$ to be the first time that we observed a streak of ones with length $k$ in our infinite sequence. Therefore, one should expect existence of streaks with length $k$ in a sequence of length $\mathbb{E}[T_{k}]$. For the sake of clarity, let us also define $\mathcal{F}_{T_k}$ to be filtration up to stopping time $T_{k}$, i.e. $\mathcal{F}_{T_k} = \sigma(X_1,\dots,X_{T_k})$. Then, we have the following:
+Let us define stopping time $T_{k}$ to be the first time that we observe a streak of ones with length $k$ in our infinite sequence. Therefore, one should expect existence of streaks with length $k$ in a sequence of length $\mathbb{E}[T_{k}]$. For the sake of clarity, let us also define $\mathcal{F}_{T_k}$ to be filtration up to stopping time $T_{k}$, i.e. $\mathcal{F}_{T_k} = \sigma(X_1,\dots,X_{T_k})$. Then, we have the following:
 $$ \mathbb{E}[T_k|\mathcal{F}_{T_{k-1}}] = \frac{1}{2}(1+T_{k-1}) + \frac{1}{2}(1+T_{k-1} + \mathbb{E}[T_k])$$
 This is due to the fact that a streak of length $k-1$ must occur before than a streak of length $k$. Therefore, at time $T_{k-1}+1$ either we are done by observing a 1 or everything resets to a new sequence by observing a 0.^[This reset argument is rather technical and it's due to the Strong Markov Property of discrete Markov Chains which states that $(X_{T+n})_{n \ge 1}$ is again a Markov Chain with the same transition probability provided that $T$ is a stopping time.] Now by taking expectations from both sides we obtain this recursive equation:
 
@@ -94,12 +94,52 @@ gen_streak <- function(len) {
 }
 
 set.seed(1432)
+par(mfrow = c(1,2))
 gen <- replicate(1000, gen_streak(len = 8))
-hist(gen, breaks = 50, main = expression(paste("Histogram of ", T[k], " for k=8")), freq=TRUE)
+hist(gen, breaks = 40, main = "", xlab=expression(paste(T[k], " for k=8")), freq=FALSE)
 abline(v = mean(gen), col = "red")
-text(mean(gen), 70, sprintf("%.1f", mean(gen)), pos = 4)
+text(mean(gen), 0.001, sprintf("%.1f", mean(gen)), pos = 4)
+
+gens <- lapply(2:8, function(len) replicate(1000, gen_streak(len)))
+plot( lapply(gens, mean), lapply(gens, sd), 'b', cex=0.8, xlab = expression(paste("mean(", T[k], ")")), ylab =  expression(paste("std(", T[k], ")")) )
 
 ```
 
-In conclusion, one should expect a streak of length $\log_2(n)$ in a fair random sequence and 
+In conclusion, one should expect a streak of length $\log_2(n)$ in a fair random sequence. Thus, for those of you who was suspicious toward the second provided sequence due to long runs, I must say you were wrong. 
 
+### Wald and Wolfowitz Test
+
+Myriad number of tests were developed to quantify randomness in a sequence. After all, this is an important problem since fields such as cryptography relies heavily on the randomness assumption which guarantees existence of codes that are intractable to break. Some tests are based on the longest run in the sequence, while others as in Wald and Wolfowitz test are based on the number of runs. 
+
+Instead of binary, let us assume $\Omega = \{+1,-1\}^\infty$ which allows us to easily detect changes in the sequence. Thus, we can define $R_n$ to be the number of runs in a sequence of length $n$ and can be expressed explicitly in the following way:
+
+$$ R_{n} = 1 + \sum_{t=2}^{n}{\frac{1-X_{t}X_{t-1}}{2}} $$
+Note that $R_{n}$ consist of sums of $n-1$ independent random variables, and therefore CLT can be applied. Subsequently, one can design a test to reject the null hypothesis $H_0$ when the following statistics is too large in absolute value and obtain a p-value.
+$$ \frac{R_n - \mathbb{E}[R_n]}{Var(R_n)} = \frac{1}{\sqrt{n-1}}\sum_{t=2}^{n}{X_{t}X_{t-1}} \overset{n \mapsto \infty}{\longrightarrow} \mathcal{N}(0,1) $$
+
+Now, if we apply this test to the given sequences we observe that the latter looks to be significantly more random than the former which is counter-intuitive.
+```{r , echo=FALSE}
+library(kableExtra)
+H <- 1
+T <- -1
+
+first <- c(H,T,H,H,T,H,T,H,H,H,T,H,T,H,H,T,H,H,T,T,H,T,H,H,T)
+second <- c(H,T,H,H,H,H,T,H,T,T,H,T,H,H,H,H,H,T,H,T,T,T,T,T,T)
+n <- length(first)
+
+tbl <- data.frame("First Sequnce" = 1 - pchisq( (sum(first[-1] * first[-n]) / sqrt(n-1))^2, df=1 ), 
+                  "Second Sequnce" = 1 - pchisq( (sum(second[-1] * second[-n]) / sqrt(n-1))^2, df=1 ),
+                  row.names = "P Value")
+
+knitr::kable(tbl) %>%
+  kable_styling(position = "center", full_width = FALSE)
+
+```
+
+This does not necessarily mean, our test was wrong or we got bad luck, but could simply mean that our intuition is not fully aligned with the intended notion of randomness. As much as human perception of randomness could be biased, generating something that looks random is difficult. It is also worth mentioning that this entire discussion was 1-dimensional and mainly focused on 1-dimensional local features such as streaks. However, one should expect novel and astonishing phenomena to occur even in 2-dimensions since human intuition is now equipped with 2-dimensional local neighborhood. 
+
+```{r , echo = FALSE}
+set.seed(231)
+image(matrix(sample(c(0,1),15*15, replace=TRUE), ncol=15), col = grey.colors(2, start=0, end = 1), axes = FALSE , asp=1)
+```
+Phenomena such as percolation which states that there is a path from center to the border of a random 2-dimensional matrix with black and white pixels is of particular interest to me and I'll write about them in the near future.
