@@ -1,0 +1,106 @@
+---
+title: What is Considered to be Random?
+author: Navid Ardeshir
+date: '2020-08-16'
+categories:
+  - notes
+tags:
+  - Probability
+  - Hypothesis Testing
+  - Statistics
+  - Logic
+  - Philosophy
+draft: yes
+---
+
+We all have heard of prominent artists such as [Jackson Pollock](https://en.wikipedia.org/wiki/Jackson_Pollock) that at first sight on their work did not appreciate the complexity and level of intricacy in their pieces. One, without taste of art (and math!) might foolishly claim that they can reproduce similar patterns since there are actually none! It looks random. but what does "random" actually mean?^[A rigorous explanation can be found [here](https://www.maa.org/sites/default/files/pdf/upload_library/22/Ford/Volchan46-63.pdf)] A word that has been thrown around carelessly in daily life which contain variety of meanings. If you think about it really, it's not so obvious how to actually define "random" rigorously and it's been a matter of debate for a long time in probability theory. 
+
+![Autumn Rhythm by J. Pollock](/images/pollock.jpg)
+
+Historically, probability has it's roots in gambling and safe to say that its classical form was developed by gamblers to enhance their gaming strategies! In addition, probability theory in its early stages was built upon counting and combinatorics. Probability associated to events were simply defined as number of desirable cases over total number of cases which would result in a rational fraction. People would have laughed at you if you've said that you have a biased coin with $p = \frac{1}{\sqrt{2}}$ or any other irrational number. Surprisingly, a physician named [G. Cardano](https://en.wikipedia.org/wiki/Gerolamo_Cardano) was first to conjecture that some sort of Law of Large Numbers should rule random sequences (of independent trials) to provide a practical meaning, and was later proved rigorously by Bernoulli.^[[Some Laws and Problems of Classical Probability and How Cardano Anticipated Them](http://www.columbia.edu/~pg2113/index_files/Gorroochurn-Some%20Laws.pdf)] In fact, this law opened a window in which you can associate even irrational probabilities to events since any irrational number can be well approximated by rational fractions. All this has led to a frequency point of view of probability which was the bridge between mathematics and real world, and later allowed statisticians to do inference.
+
+## What Does Probability of an Event Mean in Practise?
+#### A circular approach
+
+What do we mean by having a fair coin? Well, one explanation is that the outcome of the tossed coin is unpredictable to us and we have no preference over each side. This statement, although true, is nevertheless subjective and one might even say they do have the capability to predict the outcome. How can we fact check that? Naturally, one would replicate the experiment multiple times and somehow compare the predicted and real outcomes. This is the point where things get a little circular. In order to give universal meaning to probability you need multiple outcomes of that coin tossing experiment with the same randomness; In other words, generated independently and identically. Randomness is only practically meaningful through replication and that was the main motivation to define it theoretically in such a way to conform to this idea.^[It is fair to say independence itself is not well defined in practice. Do we mean to conduct our experiment with exact same  conditions? Shouldn't that make the outcome identical to the previous experiment? This is indeed a matter of debate in philosophy of probability and I don't have unified answer to it.]
+
+>This sort of argument is analogous to say 1 object is only meaningful if there exists 2 of them besides together, moreover 1+1=2. Thus, 1 is tied to the whole integer system and they are not meaningful individually.
+
+## A Rigorous Attempt to Define Randomness
+
+Suppose $\Omega=\{0,1\}^\mathbb{N}$ be the outcome space associated to the sequence of a coin tossed infinitely many times, denoted as $X_1,X_2, \dots$. Indeed, we assume trials are performed independently, i.e. $(X_n)_{n\ge1}$ are independent random variables.^[A pedantic reader might also be skeptical about this statement since it's not trivial to define independence over an infinite collection of random variables and it's true. It requires further knowledge in measure theory but for now consider it means every finite sub-collection should be independent] It is common to consider independence provides chaos in the sequence and makes it irregular since there are no sensible dependency among the variables, however it's the very thing that adds some sort of limiting structure to the sequence. This structure ensures that a random sequence must satisfy some sort of frequency stability condition, and suggests to define randomness upon this crucial condition. The necessity of this condition is evident, however the more serious question is "Is this property sufficient?".
+
+**Deifinition.** A binary sequence $X=(X_n)_{n \ge 1}$ is considered to be random if it has the following properties:
+
+- (*Frequency Stability*) let $f_n = X_1 + \dots+X_n$ be the number of 1s among first $n$ terms. Then:
+  $$ \lim_{n \mapsto \infty}{\frac{f_n}{n}} = p $$
+  exists and $0<p<1$.
+- Suppose $\Phi$ is a rule for selecting a subsequence of $X$ such that $X_n$ is chosen iff $\Phi(X_1,\dots,X_{n-1})=1$. Then the  subsequence obtained via this rule must satisfy the aforementioned property.
+
+As discussed previously, the first property is known as the Law of Large Numbers. The second property, although looks mysterious, simply states that valid subsequences should also satisfy frequency stability since after all they are a sub-collection of i.i.d. random variables. It also has an interpretation in gambling called *Laws of Excluded Gambling Strategy Strategy*. Indeed, every subsequence won't work; For instance, if you look at the subsequence that they are all 0s or all 1s then stability will not hold. In the rest of this article we will adopt this notion of randomness as our definition.
+
+## Perception of Randomness
+
+In this section we are mainly interested in understanding how human intuition perceives randomness. What type of features in a sequence would trigger human's intuition as chaotic? Suppose I give you a binary sequence and ask you to judge about whether this sequence was generated uniformly random or not. Can you find meaningful patterns in it? Which one of the following sequences appears to be random in your perspective? 
+
+$$\{H,T,H,H,T,H,T,H,H,H,T,H,T,H,H,T,H,H,T,T,H,T,H,H,T\}$$
+$$\{H,T,H,H,H,H,T,H,T,T,H,T,H,H,H,H,H,T,H,T,T,T,T,T,T\}$$
+These type of questions are rather difficult to answer in a polarized manner. However, there are quantitative methods to answer them in a spectrum. In statistics, we usually call it *Hypothesis Testing* which itself has a long history. Psychologists found that people's notion of randomness is rather biased in the sense that they see streaks in a truly random sequence and expect more alternation, or shorter runs, than are there. They tend to pay more attention toward frequency stability rather than other features. This phenomena makes sense in a way that the actual mathematical definition relies heavily on frequency stability but the issue is you are provided with only a partial sequence and not an infinite one. This is the part that you have to be more clever and extract some extra features to make your final judgment.
+
+### Streaks of What Length Should We Expect In a Random Sequence of Length n?
+
+Let us define stopping time $T_{k}$ to be the first time that we observed a streak of ones with length $k$ in our infinite sequence. Therefore, one should expect existence of streaks with length $k$ in a sequence of length $\mathbb{E}[T_{k}]$. For the sake of clarity, let us also define $\mathcal{F}_{T_k}$ to be filtration up to stopping time $T_{k}$, i.e. $\mathcal{F}_{T_k} = \sigma(X_1,\dots,X_{T_k})$. Then, we have the following:
+$$ \mathbb{E}[T_k|\mathcal{F}_{T_{k-1}}] = \frac{1}{2}(1+T_{k-1}) + \frac{1}{2}(1+T_{k-1} + \mathbb{E}[T_k])$$
+This is due to the fact that a streak of length $k-1$ must occur before than a streak of length $k$. Therefore, at time $T_{k-1}+1$ either we are done by observing a 1 or everything resets to a new sequence by observing a 0.^[This reset argument is rather technical and it's due to the Strong Markov Property of discrete Markov Chains which states that $(X_{T+n})_{n \ge 1}$ is again a Markov Chain with the same transition probability provided that $T$ is a stopping time.] Now by taking expectations from both sides we obtain this recursive equation:
+
+$$ \mathbb{E}[T_k] = 2(1+\mathbb{E}[T_{k-1}])$$
+With initial condition $T_{0} = 0 $ which has this solution:
+
+$$ \mathbb{E}[T_k] = 2^{k+1}-2 $$
+
+At this point, an interesting question would be whether this random variable is concentrated around it's mean or not? if so, how well? Apparently this does not seem to be true and $T_{k}$ tends to have a heavy tailed distribution.
+
+```{r , echo=FALSE}
+
+gen_streak <- function(len) {
+  cursor <- 0
+  ref <- paste(rep(1, len), collapse="")
+  sample_len <- 2^(len+1)-2
+  
+  check_streak <- function(sequ) {
+    force(sequ)
+    sequ <- paste(sequ, collapse="") # Character vector
+    check <- regexpr(ref, sequ, fixed = TRUE)[[1]]
+    if(check == -1) {
+      cursor <<- cursor + sample_len - len + 1
+      return(TRUE)
+    } else {
+      cursor <<- cursor + check + len - 1
+      return(FALSE)
+    }
+  }
+  
+  gen_seq <- function(prev) {
+    if(is.null(prev_seq)) {
+      prev_seq <<- sample(c(0,1), sample_len ,replace = TRUE)
+    } else {
+      prev_seq <<- c(tail(prev, len-1), sample(c(0,1), sample_len-len+1, replace=TRUE))
+    }
+    return(prev_seq)
+  }
+  
+  prev_seq <- NULL
+  while( check_streak(gen_seq(prev_seq)) ) {}
+  return(cursor)
+}
+
+set.seed(1432)
+gen <- replicate(1000, gen_streak(len = 8))
+hist(gen, breaks = 50, main = expression(paste("Histogram of ", T[k], " for k=8")), freq=TRUE)
+abline(v = mean(gen), col = "red")
+text(mean(gen), 70, sprintf("%.1f", mean(gen)), pos = 4)
+
+```
+
+In conclusion, one should expect a streak of length $\log_2(n)$ in a fair random sequence and 
+
