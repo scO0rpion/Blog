@@ -1,4 +1,4 @@
-baseURL = "https://mathblesphemy.netlify.app"
+baseURL = "https://mathblasphemy.netlify.app"
 languageCode = "en-us"
 title = "Math Blesphemy"
 theme = "hugo-theme-cactus"
