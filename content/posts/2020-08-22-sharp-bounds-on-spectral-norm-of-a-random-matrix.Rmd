@@ -108,7 +108,7 @@ plot(1/log(n), standard, xlab=expression(1/log(n)), ylab=expression(paste("Var[m
 
 ## Variance Bound for Spectral Norm
 
-Thus far we proved $||A||_{op}$ is 1-subgaussian, moreover its variance is bounded by one in the case of standard normal entries due to the fact that it's 1-Lipschitz. However the following simulation indicates that spectral norm enjoys superconcentration and its variance behaves roughly as $1/n^{\frac{1}{3}}$, thus Lipschitz concentration once again has failed to capture the underlying truth!^[A proof of this can be found in chapter 9 of the book by Chatterjee mentioned earlier.]  
+Thus far we proved $||A||_{op}$ is 1-subgaussian, moreover its variance is bounded by one in the case of standard normal entries due to the fact that it's 1-Lipschitz. However the following simulation indicates that spectral norm enjoys superconcentration and its variance behaves roughly as $(\sqrt{n} +\sqrt{m})(1/\sqrt{n} + 1/\sqrt{m})^{\frac{1}{3}}$, thus Lipschitz concentration once again has failed to capture the underlying truth!^[A proof of this can be found in chapter 9 of the book by Chatterjee mentioned earlier.]  In this simulation $m=n$ and the variance was estimated over 1000 replications. Note that the slope of the line should be close to $-\frac{1}{3}$.
 
 ```{r, echo = FALSE}
 
