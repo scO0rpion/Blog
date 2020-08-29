@@ -8,7 +8,7 @@ tags:
   - Random Matrix Theory
   - Probability
   - Measure Concentration
-draft: yes
+draft: no
 ---
 
 Singular values of matrices show up in many different places, and studying them has significant importance in math. As per usual, it has a fairly simple definition but requires quite diffficult tools to analyze comprehensively. In this article I aim to demonstrate how would norm of a Gaussian random matrix behave and answer questions such as "How does it's mean behave?" or "Is it concentrated around it's mean?". A crucial assumption employed on the entries of $A$ is independence. Indeed, the results can be extended easily to subgaussians as well, however stating theorems with gaussians evaporates the annoying constants! Let's set up some notations, shall we?
