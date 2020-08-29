@@ -34,7 +34,7 @@ Suppose $\Omega=\{0,1\}^\mathbb{N}$ be the outcome space associated to the seque
 - (*Frequency Stability*) let $f_n = X_1 + \dots+X_n$ be the number of 1s among first $n$ terms. Then:
   $$ \lim_{n \mapsto \infty}{\frac{f_n}{n}} = p $$
   exists and $0<p<1$.
-- Suppose $\Phi$ is a rule for selecting a subsequence of $X$ such that $X_n$ is chosen iff $\Phi(X_1,\dots,X_{n-1})=1$. Then the  subsequence obtained via this rule must satisfy the aforementioned property.
+- Suppose $\Phi$ is a rule for selecting a subsequence of $X$ such that $X_n$ is chosen iff $\Phi(X_1,\dots,X_{n-1})=1$. Then the  subsequence obtained via this rule must satisfy the aforementioned property with the same $p$.
 
 As discussed previously, the first property is known as the Law of Large Numbers. The second property, although looks mysterious, simply states that valid subsequences should also satisfy frequency stability since after all they are a sub-collection of i.i.d. random variables. It also has an interpretation in gambling called *Laws of Excluded Gambling Strategy Strategy*. Indeed, every subsequence won't work; For instance, if you look at the subsequence that they are all 0s or all 1s then stability will not hold. In the rest of this article we will adopt this notion of randomness as our definition.
 

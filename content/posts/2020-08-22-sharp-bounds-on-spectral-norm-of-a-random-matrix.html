@@ -1,0 +1,112 @@
+---
+title: Sharp Bounds on Spectral Norm of a Random Matrix
+author: Navid Ardeshir
+date: '2020-08-22'
+categories:
+  - notes
+tags:
+  - Random Matrix Theory
+  - Probability
+  - Measure Concentration
+draft: yes
+---
+
+
+
+<p>Singular values of matrices show up in many different places, and studying them has significant importance in math. As per usual, it has a fairly simple definition but requires quite diffficult tools to analyze comprehensively. In this article I aim to demonstrate how would norm of a Gaussian random matrix behave and answer questions such as “How does it’s mean behave?” or “Is it concentrated around it’s mean?”. A crucial assumption employed on the entries of <span class="math inline">\(A\)</span> is independence. Indeed, the results can be extended easily to subgaussians as well, however stating theorems with gaussians evaporates the annoying constants! Let’s set up some notations, shall we?</p>
+<p><strong>Definition.</strong> For any matrix <span class="math inline">\(A \in \mathbb{R}^{n \times m}\)</span> we define spectral norm (i.e. largest singular value) as:
+<span class="math display">\[||A||_{op} = \max_{\substack{u \in S^{n-1} \\ v \in S^{m-1}}}{\langle u,Av \rangle} \]</span></p>
+<p>It is worth mentioning, the reason that I exchanged maximum instead of suprema is merely because suprema of a continuous function will be achieved on a compact set. This norm is a measure of how much a vector can be dialated through the linear transform <span class="math inline">\(x \mapsto Ax\)</span> in the worst case.</p>
+<p><strong>Definition.</strong> An unbiased random variable <span class="math inline">\(X\)</span> is called <span class="math inline">\(\sigma^2\)</span>-<a href="https://en.wikipedia.org/wiki/Sub-Gaussian_distribution">subgaussian</a> if one of the following holds.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Moreover, all the statements are equivalent with different constants:</p>
+<ul>
+<li>(Moment Generating Bound) <span class="math inline">\(\mathbb{E}[e^{tX}] \le e^{\frac{t^2 \sigma^2}{2}}\)</span> for all <span class="math inline">\(t \in \mathbb{R}\)</span>.</li>
+<li>(Tail Bound) <span class="math inline">\(\mathbf{P}[|X| \ge t] \le 2 e^{-\frac{t^2}{2 \sigma^2}}\)</span> for all <span class="math inline">\(t \ge 0\)</span>.</li>
+<li>(Moment Bound) <span class="math inline">\(||X||_{L^{p}} = (\mathbb{E}[X^{p}])^{\frac{1}{p}} \le \sigma \sqrt{p}\)</span> for all <span class="math inline">\(p \ge 1\)</span>.</li>
+<li>(Another MGF Bound) <span class="math inline">\(\mathbb{E}[e^{\frac{X^2}{2 \sigma^2}}] \le 2\)</span></li>
+</ul>
+<p>In a nutshell, this property is roughly saying that the random variable behaves like a normal and it is desirable since it’s basically equivalent to concentration around mean (or median). For fixed vectors <span class="math inline">\(u \in \mathbf{S}^{n-1}, v \in \mathbf{S}^{m-1}\)</span> one can easily check that <span class="math inline">\(X_{u,v} = \langle u,Av \rangle\)</span> is also sub-gaussian with the same parameter, thus concentrated around it’s mean. However, it’s not clear what can be said about suprema of this collection of random variables which is the quantity of interest.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> Note that these random variables are locally correlated, i.e. for a pair <span class="math inline">\((u^{&#39;},v^{&#39;})\)</span> close to <span class="math inline">\((u,v)\)</span> we expect <span class="math inline">\(X_{u,v}\)</span> to be close to <span class="math inline">\(X_{u^{&#39;},v^{&#39;}}\)</span>. More precisely, one can write:
+<span class="math display">\[ |X_{u,v} - X_{u^{&#39;}, v^{&#39;}}| \le |X_{u,v} - X_{u^{&#39;}, v}| + |X_{u^{&#39;},v} - X_{u^{&#39;}, v^{&#39;}}| \le ||A||_{op}(||u-u^{&#39;}|| + ||v-v^{&#39;}||)  \]</span>
+Surprisingly, the inverse is also true meaning if one take two pairs far apart from each other the corrseponding random variables will also be uncorrelated, thus behave as though they were independent since uncorrelatedness is equivalent to independence in gaussian fields. This sort of argument motivated proofs based on <span class="math inline">\(\epsilon\)</span>-net methods which I do not intend to go through here, however the intuition is very insightful. In order to make this statement more precise one may use the following comparison inequality for gaussian random variables.</p>
+<p><strong>Theorem (Sudakov-Fernique Inequality).</strong> Suppose <span class="math inline">\(X,Y \in \mathbb{R}^n\)</span> are two independent centered Gaussian vectors such that <span class="math inline">\(\mathbb{E}[|X_{i} - X_{j}|^2] \le \mathbb{E}[|Y_{i}-Y_{j}|^{2}]\)</span> for <span class="math inline">\(\forall i,j \in [n]\)</span>. Then:
+<span class="math display">\[  \mathbb{E}[\max_{i \le n}{X_{i}}] \le \mathbb{E}[\max_{i \le n}{Y_{i}}] \]</span>
+As a special case if we assume that <span class="math inline">\(X,Y\)</span> has the same variance coordinatewise, then the condition in the theorem verbally translates into <span class="math inline">\(X\)</span> is more correlated than <span class="math inline">\(Y\)</span>, thus should possess a higher maximum which aligns with intuition.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> In addition, it is easy to extend this to infinite case using a simple truncation and then applying monotone convergence theorem provided that the index set is seperable. I am not going to provide a proof for this theorem here since the ideas overlap with the theorems mentioned below but this theorem has an direct application to upper bounding spectral norm of a matrix. Take <span class="math inline">\(X_{u,v}\)</span> as defined above and assume entries of matrix <span class="math inline">\(A\)</span> has standard normal distribution:
+<span class="math display">\[\begin{aligned} 
+\mathbb{E}[|X_{u,v} - X_{u^{&#39;},v^{&#39;}}|^2] &amp;= \mathbb{E}[|\sum_{\substack{i \in [n] \\ j \in [m]}}{(u_{i}v_{j} - u^{&#39;}_{i}v^{&#39;}_{j})A_{i,j}}|^2] = \sum_{\substack{i \in [n] \\ j \in [m]}}{(u_{i}v_{j} - u^{&#39;}_{i}v^{&#39;}_{j})^2} \\
+&amp;= \sum_{\substack{i \in [n] \\ j \in [m]}}{(u_{i}v_{j} - u^{&#39;}_{i}v_{j})^2 + (u_{i}^{&#39;}v_{j} - u^{&#39;}_{i}v^{&#39;}_{j})^2 + 2u^{&#39;}_{i}v_{j}(u_{i} - u^{&#39;}_{i})(v_{j} - v^{&#39;}_{j})} \\
+&amp;= \sum_{i \in [n]}{ (u_{i} - u^{&#39;}_{i})^2} + \sum_{j \in [m]}{(v_{j} - v^{&#39;}_{j})^2 } + 2\underbrace{\sum_{i \in [n]}{u^{&#39;}_{i}(u_{i} - u^{&#39;}_{i})}}_{\le 0} \underbrace{\sum_{j \in [m]}{v_{j}(v_{j} - v^{&#39;}_{j})}}_{\ge 0} \\
+&amp;\le \sum_{i \in [n]}{ (u_{i} - u^{&#39;}_{i})^2} + \sum_{j \in [m]}{(v_{j} - v^{&#39;}_{j})^2 }
+\end{aligned}\]</span>
+Now, one can define the following process for independent random variables <span class="math inline">\(G \sim \mathcal{N}(0,\mathbf{I}_{n \times n})\)</span> and <span class="math inline">\(G^{&#39;} \sim \mathcal{N}(0,\mathbf{I}_{m \times m})\)</span> as:
+<span class="math display">\[Y_{u,v} = \langle u,G \rangle + \langle v, G^{&#39;} \rangle \quad \forall u \in \mathbf{S}^{n-1},v \in \mathbf{S}^{m-1}\]</span>
+Therefore, by Fernique’s inequality we obtain:
+<span class="math display">\[ \mathbb{E}[||A||_{op}] = \mathbb{E}[\sup_{\substack{u \in S^{n-1} \\ v \in S^{m-1}}}{X_{u,v}}] \le \mathbb{E}[\sup_{\substack{u \in S^{n-1} \\ v \in S^{m-1}}}{Y_{u,v}}] = \mathbb{E}[||G||] + \mathbb{E}[||G^{&#39;}||] \le \sqrt{m} + \sqrt{n}\]</span>
+This is a sharp upper bound when <span class="math inline">\(m=\Omega(n)\)</span> since we can lower bound spectral norm by the norm of its first column:
+<span class="math display">\[\mathbb{E}[||A||_{op}] \ge \mathbb{E}[\sup_{u \in S^{n-1}}{X_{u,e_1}}] = \mathbb{E}[||A_{:,1}||] \gtrsim \sqrt{n}\]</span>
+Now that we established a sharp behaviour of largest singular value the next question on the list is how well this quantity is conentrated around its mean.</p>
+<div id="a-hammer-lipschitz-concentration" class="section level2">
+<h2>A Hammer (Lipschitz Concentration)</h2>
+<p>Before we continue, we need to introduce a powerful tool which is widely used in the literature of measure concentration. Suppose <span class="math inline">\(\gamma_{n}\)</span> is <span class="math inline">\(n\)</span>-dimensional Gaussian measure where expectation is deonted by <span class="math inline">\(\gamma_{n}f = \mathbb{E}_{\gamma_n}[f]\)</span> for <span class="math inline">\(f:\mathbb{R}^n \mapsto \mathbb{R}\)</span>. Then Poincaré’s inequality suggest that functions with small local variations should expect small variances. In other words, some sort of gradient of the function as an indication of local fluctuation can be translated into a bound on global fluctuation.
+<span class="math display">\[ Var(f) \le \mathbb{E}[|| \nabla f ||_2^2] \]</span>
+This mainly suggest that one should expect dimension-independent concentration bounds for Lipschitz functions.</p>
+<p><strong>Theorem.</strong> Suppose <span class="math inline">\(f:\mathbb{R}^n \mapsto \mathbb{R}\)</span> is a <span class="math inline">\(\kappa\)</span>-Lipschitz function. Then, we have the following concentration inequality:
+<span class="math display">\[ \gamma_{n}\{|f - \gamma_n f | \ge t \} \le 2 e^{-\frac{t^2}{2 \kappa^2}}\]</span>
+There are in fact many ways to approach this problem namely Interpolation Method due to Pisier-Mauray, Smart Path due to Talagrand, Isoperimetry due to Borell and Sudakov, Transporation Method due to Marton, etc.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> However, I will provide a neat proof usng Stochastic Calculus which is mathematically beautiful but may seem like a magical juggling performed by the very Brownian Motion! Honestly, I get super excited whenever Brownian Motion comes up and it almost never disappoints.</p>
+<details>
+<p><summary style="color:red">Proof. (Requires Knowledge in SDE)</summary></p>
+<p><strong>Proof.</strong> The idea is to think of our gaussian vector as a point from a <span class="math inline">\(n\)</span>-dimensional brownian path <span class="math inline">\(B_{t}\)</span> at time 1 and define the martingale <span class="math inline">\(M_{t} = \mathbb{E}[f(B_{1}) | \mathcal{F}_{t}]\)</span> which interpolates continuously between <span class="math inline">\(M_{0} = \gamma_{n}f\)</span> and <span class="math inline">\(M_{1}=f(B_{1})\)</span>. Since, Brownian Motion is also a Markov Process we can rewrite <span class="math inline">\(M_{t}\)</span> as <span class="math inline">\(\mathbb{E}[f(B_{1})| B_{t}] = F(t, B_{t})\)</span> where <span class="math inline">\(F\)</span> is a smooth function and in fact inherits smoothness properties of <span class="math inline">\(f\)</span>.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> Assuming it’s valid to exchange integration and differentiation, one can write:
+<span class="math display">\[ \begin{aligned}
+||\nabla_{B_{t}}F(t,B_t)|| &amp;= ||\nabla_{B_{t}}\mathbb{E}[f(B_{1}- B_{t} + B_{t}) | B_{t}]|| \\
+&amp;= ||\mathbb{E}_{G}[\nabla_{B_{t}} f(\sqrt{1-t}G + B_{t})] || \\
+&amp;\le \mathbb{E}_{G}[||\nabla_{B_{t}}f(\sqrt{1-t}G + B_{t})||] \le \kappa
+\end{aligned}\]</span>
+where the last inequality is due to Jensen’s inequality. Thus, we can now use Fundamental Theorem of Calculus and write the difference <span class="math inline">\(M_{1} - M_{0}\)</span> as an integral of <span class="math inline">\(dM_{t}\)</span> and this is the part Ito’s Formula kicks in:
+<span class="math display">\[ dM_{t} = \frac{\partial}{\partial t}F(t,B_t)dt + \sum_{i=1}^{n}{\frac{\partial}{\partial B_{t,i}}F(t,B_t)dB_{t,i}} + \frac{1}{2}\sum_{i,j}{\frac{\partial^2}{\partial B_{t,i} \partial B_{t,j}}F(t,B_t)d\langle B_{,i}, B_{,j} \rangle_{t}} \]</span>
+Where <span class="math inline">\(\langle X,Y \rangle\)</span> is the quadratic variation of two <span class="math inline">\(\mathcal{L}^2\)</span> martingales such that <span class="math inline">\(XY- \langle X,Y\rangle\)</span> is again martingale. Now quadratic variation between coordinate <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> is zero due to independence for distnct <span class="math inline">\(i,j\)</span>. However, by the uniqueness of quadratic variation for <span class="math inline">\(i=j\)</span> we have: <span class="math display">\[\mathbb{E}[B_{t,i}^2 - t |\mathcal{F}_s] = \mathbb{E}[(B_{t,i}-B_{s,i} + B_{s,i})^2 - t |\mathcal{F}_s] = B_{s,i}^2 - s\]</span>
+Thus, <span class="math inline">\(\langle B_{,i},B_{,i} \rangle_{t} = t\)</span> and we obtain:
+<span class="math display">\[ dM_{t} =  \sum_{i=1}^{n}{\frac{\partial}{\partial B_{t,i}}F(t,B_t)dB_{t,i}} + (\frac{\partial}{\partial t}F(t,B_t) + \frac{1}{2}\sum_{i}{\frac{\partial^2}{\partial B_{t,i}^2}F(t,B_t)})dt\]</span>
+Since <span class="math inline">\(M\)</span> is martingale the second term (which has finite variation) must be zero which implies that <span class="math inline">\(F\)</span> satisfies heat equation and again we can rewrite:
+<span class="math display">\[ M_{t} - M_{0} = \sum_{i=1}^{n}{\int_{0}^{t}{\frac{\partial}{\partial B_{t,i}}F(t,B_t)dB_{t,i}}} \]</span></p>
+<p>Now by linearity of quadratic variations:
+<span class="math display">\[ \begin{aligned} \langle M \rangle_{t} &amp;= \sum_{i,j}{\int_{0}^{t}{\frac{\partial}{\partial B_{t,i}}F(t,B_t)\frac{\partial}{\partial B_{t,j}}F(t,B_t)d\langle B_{,i}, B_{,j}\rangle_{t}}} \\
+&amp;= \sum_{i=1}^{n}{\int_{0}^{t}| \frac{\partial}{\partial B_{t,i}}F(t,B_t)|^2 dt} = \int_{0}^{t} ||\nabla F(t,.)||^2 dt \le \kappa^2 t \end{aligned}\]</span></p>
+This might not seem significant however a lot of information is burried deep within it. Again using Ito’s formula one can prove that the following process is a martingale:
+<span class="math display">\[ Z_{t} = e^{\lambda M_{t} - \frac{\lambda^2}{2} \langle M\rangle_{t}} \ge e^{\lambda M_{t} - \frac{\lambda^2\kappa^2}{2}t} \]</span>
+Therefore:
+<span class="math display">\[ e^{\lambda \gamma_{n}f}= e^{\lambda M_{0}} =\mathbb{E}[Z_0] = \mathbb{E}[Z_1] \ge \mathbb{E}[e^{\lambda f(B_1) - \frac{\lambda^2 \kappa^2}{2}}]\]</span>
+Now by rearranging terms:
+<span class="math display">\[ \mathbb{E}[e^{\lambda(f - \gamma_{n}f)}] \le e^{\frac{\lambda^2 \kappa^2}{2}} \]</span>
+Which proves <span class="math inline">\(f\)</span> is <span class="math inline">\(\kappa\)</span>-subgaussian.
+</details>
+<p>Subsequently, This theorem allows us to derive dimension-independent concentration for spectral norm based on the fact that it is a 1-Lipschitz function.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> Note that this inequality is in fact sharp for the special case of linear functions in the sense that RHS is the asymptotic tail of <span class="math inline">\(\mathcal{N}(0, \kappa^2)\)</span>, though this sharpness might drop for some other class of Lipschitz functions. An immediate implication of this theorem is that the variance of <span class="math inline">\(f\)</span> is bounded above by <span class="math inline">\(\kappa^2\)</span> but what happens as we change the dimensions? One way for testing sharpness is via finding true order of the variance and see if it’s bounded below by a constant or shrinks toward zero as <span class="math inline">\(n\)</span> increases. In most of the cases, actually variance vanishes to zero! This phenomena is usually referred to as <em>Superconcentration</em><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> which provides novel methods to compute true order of the variance with respect to <span class="math inline">\(n\)</span>. All this, arise the question of how does the variance of spectral norm behaves? In the following I intend to specify some results surrounding this question without providing a proof. As an illuminating example, we may take a look at maximum of a gaussian vector which is a special case of the problem at hand.</p>
+</div>
+<div id="finite-maximum-over-a-gaussian-vector" class="section level2">
+<h2>Finite Maximum Over a Gaussian Vector</h2>
+<p>Consider <span class="math inline">\(X \in \mathbb{R}^{n}\)</span> to be a Gaussian vector with covariance matrix <span class="math inline">\(\Sigma\)</span>. It is a well established result that the mean of <span class="math inline">\(X^{(n)} = \max_{i}{X_{i}}\)</span> behaves roughly as <span class="math inline">\(\sqrt{2 \sigma^2 \log(n)}\)</span> and the variance is bounded by <span class="math inline">\(\sigma^2 = \max_{i \le n} Var(X_{i})\)</span>. In order to obtain the former one can simply use Jensen’s inequality and optimize over <span class="math inline">\(\lambda\)</span> afterwards:
+<span class="math display">\[\frac{1}{\lambda}\mathbb{E}[\log(e^{\lambda X^{(n)}})] \le \frac{1}{\lambda}\log(\mathbb{E}[e^{\lambda X^{(n)}}]) \le \frac{1}{\lambda}\log(\mathbb{E}[\sum_{i=1}^{n}{e^{\lambda X_{i}}}]) \le \frac{1}{\lambda}\log(n e^{\frac{\lambda^2 \sigma^2}{2}})\]</span>
+However, the variance bound requires extra work and can be proved via Poincaré’s Inequality mentioned earlier. Note that <span class="math inline">\(f(Y) = \max_{i}{X_{i}}\)</span> where <span class="math inline">\(Y = \Sigma^{-\frac{1}{2}}X\)</span> is almost surely differentiable. Therefore, if we define <span class="math inline">\(i^{*} = \arg\max_{i}{X_{i}}\)</span> then one can prove <span class="math inline">\(f\)</span> is <span class="math inline">\(\sigma\)</span>-Lipschitz via the chain rule and obtain the bound:
+<span class="math display">\[ Var(f) \le \mathbb{E}[||\nabla f(Y)||^2] = \mathbb{E}[||\frac{\partial X}{\partial Y} \frac{\partial f}{\partial X}||^2] = \mathbb{E}[||\Sigma^{\frac{1}{2}} e_{i^{*}}||^2] = \mathbb{E}[e_{i^{*}}^{T} \Sigma e_{i^{*}}] \le \max_{i}{\Sigma_{i,i}} = \sigma^2 \]</span></p>
+<p>Even though the concentration theorem suggest that <span class="math inline">\(X^{(n)}\)</span> is <span class="math inline">\(\sigma\)</span>-subgaussian however it’s sharpness is merely contingent upon Poincare’s inequality being unbeatable. In fact Talagrand<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> proved an extention of Poincare’s inequality which provides a sufficient condition on how to beat it. In particular, the case of maximum over independent gaussians satisfy this condition thus concludes the following bound:
+<span class="math display">\[ Var(X^{(n)}) \asymp \frac{1}{\log(n)} \]</span>
+Below is a simple simulation study with 1000 replications for each <span class="math inline">\(n\)</span> (between 10 to 100) which verifies the theoretical results.
+<img src="/posts/2020-08-22-sharp-bounds-on-spectral-norm-of-a-random-matrix_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
+<div id="variance-bound-for-spectral-norm" class="section level2">
+<h2>Variance Bound for Spectral Norm</h2>
+<p>Thus far we proved <span class="math inline">\(||A||_{op}\)</span> is 1-subgaussian, moreover its variance is bounded by one in the case of standard normal entries due to the fact that it’s 1-Lipschitz. However the following simulation indicates that spectral norm enjoys superconcentration and its variance behaves roughly as <span class="math inline">\(1/n^{\frac{1}{3}}\)</span>, thus Lipschitz concentration once again has failed to capture the underlying truth!<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
+<p><img src="/posts/2020-08-22-sharp-bounds-on-spectral-norm-of-a-random-matrix_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+It demands much more theory to prove this variance bound which I personally believe is one of the cases that the amount of effort that should be invested into proving it does not pay off proportionally!</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>One can look at High Dimensional Probability by Vershynin For a more comprehensive definition<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>This suprema can be written over a countable collection indexed by a set of dense vectors on <span class="math inline">\(S^{n-1}\)</span> and <span class="math inline">\(S^{m-1}\)</span> for those who are concerned about measurablity of spectral norm.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>One might be suspicious about how maximum magically showed up and to the extent of which class of functions this theorem might hold. It’s in fact a well established result that superadditive functions (functions which <span class="math inline">\(\frac{\partial^2}{\partial_i \partial_j}f \ge 0\)</span> holds for all <span class="math inline">\(i,j\)</span>) satisfy this inequality and maximum is just a special case.<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>The first tree methods can be found in <a href="http://www.stat.yale.edu/~pollard/Books/Mini/Gaussian.pdf">Pollard</a>. The latter can be found in Sec. 4 of High Dimesnional Probability lecture notes by Ramon Van Handel.<a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>By running a simple approximation argument one may assume <span class="math inline">\(f\)</span> is sufficiently smooth and then extend the results to the general Lipschitz case.<a href="#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p>The space of <span class="math inline">\(\mathbb{R}^{n \times m}\)</span> can be equipped with either Frobenius or spectral norm distances in order for this to make sense.<a href="#fnref6" class="footnote-back">↩</a></p></li>
+<li id="fn7"><p>There is a wonderful <a href="https://link.springer.com/book/10.1007/978-3-319-03886-5">book</a> by Chatterjee on this topic.<a href="#fnref7" class="footnote-back">↩</a></p></li>
+<li id="fn8"><p>For a detailed derivation look at HDP by Ramon Van Handel Sec. 8.3<a href="#fnref8" class="footnote-back">↩</a></p></li>
+<li id="fn9"><p>A proof of this can be found in chapter 9 of the book by Chatterjee mentioned earlier.<a href="#fnref9" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
