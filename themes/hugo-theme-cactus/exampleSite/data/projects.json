@@ -1,9 +1,9 @@
 {
   "list": [
     {
-      "name":"Hugo",
-      "url":"https://gohugo.io/",
-      "desc":"The world’s fastest framework for building websites."
+      "name":"Is Lasso Optimal?",
+      "url":"/files/Inference.pdf",
+      "desc":"A short article on optimality of Lasso estimator"
     },
     {
       "name":"Hugo Themes",
