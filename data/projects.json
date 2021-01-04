@@ -8,7 +8,12 @@
     {
       "name":"Exploration Methods Based on Value Function",
       "url":"./files/Exploration.pdf",
-      "desc":"A literature review on exploration methods in Reinforcement Learning"
+      "desc":"A domain specific literature review on exploration methods in Reinforcement Learning"
+    },
+    {
+      "name": "Online Learning Through The Lense of Potential Descent",
+      "url":"./files/Reading_Project_MLTheory2020_na2844_kns2110",
+      "desc": "A note on blackwell approachability and it's aaplications to expert advice."
     }
   ]
 }
