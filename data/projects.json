@@ -1,14 +1,14 @@
 {
   "list": [
     {
-      "name":"Hugo",
-      "url":"https://gohugo.io/",
-      "desc":"The world’s fastest framework for building websites."
+      "name":"Is Lasso Optimal?",
+      "url": "./files/Inference.pdf",
+      "desc":"A short article on optimality of Lasso estimator"
     },
     {
-      "name":"Hugo Themes",
-      "url":"https://github.com/gohugoio/hugoThemes",
-      "desc":"A curated directory of Hugo themes"
+      "name":"Exploration Methods Based on Value Function",
+      "url":"./files/Exploration.pdf",
+      "desc":"A literature review on exploration methods in Reinforcement Learning"
     }
   ]
 }

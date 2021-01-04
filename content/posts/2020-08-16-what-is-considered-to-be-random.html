@@ -13,6 +13,7 @@ tags:
 ---
 
 <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+<link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
 
 
 <p>We all have heard of prominent artists such as <a href="https://en.wikipedia.org/wiki/Jackson_Pollock">Jackson Pollock</a> that at first sight on their work did not appreciate the complexity and level of intricacy in their pieces. One, without taste of art (and math!) might foolishly claim that they can reproduce similar patterns since there are actually none! It looks random. but what does “random” actually mean?<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> A word that has been thrown around carelessly in daily life which contain variety of meanings. If you think about it really, it’s not so obvious how to actually define “random” rigorously and it’s been a matter of debate for a long time in probability theory.</p>
@@ -68,7 +69,8 @@ With initial condition $T_{0} = 0 $ which has this solution:</p>
 <p><span class="math display">\[ R_{n} = 1 + \sum_{t=2}^{n}{\frac{1-X_{t}X_{t-1}}{2}} \]</span>
 Note that <span class="math inline">\(R_{n}\)</span> consist of sums of <span class="math inline">\(n-1\)</span> independent random variables, and therefore CLT can be applied. Subsequently, one can design a test to reject the null hypothesis <span class="math inline">\(H_0\)</span> when the following statistics is too large in absolute value and obtain a p-value.
 <span class="math display">\[ \frac{R_n - \mathbb{E}[R_n]}{Var(R_n)} = \frac{1}{\sqrt{n-1}}\sum_{t=2}^{n}{X_{t}X_{t-1}} \overset{n \mapsto \infty}{\longrightarrow} \mathcal{N}(0,1) \]</span></p>
-Now, if we apply this test to the given sequences we observe that the latter looks to be significantly more random than the former which is counter-intuitive.
+<p>Now, if we apply this test to the given sequences we observe that the latter looks to be significantly more random than the former which is counter-intuitive.</p>
+<pre><code>## Warning: package &#39;kableExtra&#39; was built under R version 3.6.2</code></pre>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
