@@ -1,6 +1,6 @@
 baseURL = "https://mathblasphemy.netlify.app"
 languageCode = "en-us"
-title = "Math Blesphemy"
+title = "Math Blasphemy"
 theme = "hugo-theme-cactus"
 copyright = "" # cactus will use title if copyright is not set
 disqusShortname = "example" # Used when comments is enabled. Cactus will use site title if not set
@@ -16,24 +16,25 @@ url = "/"
 weight = 1
 
 [[menu.main]]
-name = "Writings"
-url = "/posts"
-weight = 2
-
-[[menu.main]]
-name = "Tags"
-url = "/tags"
-weight = 3
-
-[[menu.main]]
 name = "About"
 url = "/about"
-weight = 4
+weight = 2
 
 [[menu.main]]
 name = "Research"
 url = "/research"
+weight = 3
+
+[[menu.main]]
+name = "Writings"
+url = "/posts"
+weight = 4
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
 weight = 5
+
 
 [markup]
   [markup.tableOfContents]
