@@ -53,7 +53,7 @@ weight = 5
   mainSection = "posts" # your main section
   showAllPostsOnHomePage = false # default
   postsOnHomePage = 5 # this option will be ignored if showAllPostsOnHomePage is set to true
-  tagsOverview = true # show tags overview by default.
+  tagsOverview = false # show tags overview by default.
   showProjectsList = true # show projects list by default (if projects data file exists).
   projectsUrl = "https://github.com/scO0rpion" # title link for projects list
 
