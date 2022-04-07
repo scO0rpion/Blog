@@ -1,6 +1,6 @@
 baseURL = "https://mathblasphemy.netlify.app"
 languageCode = "en-us"
-title = "Math Blasphemy"
+title = "Navid Ardeshir"
 theme = "hugo-theme-cactus"
 copyright = "" # cactus will use title if copyright is not set
 disqusShortname = "example" # Used when comments is enabled. Cactus will use site title if not set
@@ -51,6 +51,7 @@ weight = 5
   # Home page settings
   description = "  "
   mainSection = "posts" # your main section
+  aboutSection = "about"
   showAllPostsOnHomePage = false # default
   postsOnHomePage = 5 # this option will be ignored if showAllPostsOnHomePage is set to true
   tagsOverview = false # show tags overview by default.

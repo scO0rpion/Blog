@@ -31,7 +31,27 @@
       </p>
   {{ end }}
   </section>
-
+  
+  <section id="About">
+    <section class="h1">
+      <a href="{{ .Site.Params.aboutSection | absURL }}">Bio</a>
+    </section>
+    <img style="float: right; padding: 0px 0px 0px 10px;" src="/images/navid.png" width="170">
+    <p>
+      I'm a third year Ph.D. student in statistics at Columbia University, 
+      advised by <a href="https://www.cs.columbia.edu/~djhsu/">Daniel Hsu</a> 
+      and <a href="https://sites.google.com/site/malekiarian/">Arian Maleki</a>. 
+      I earned my bachelors in Electrical Engineering at Sharif University in 2019 
+      which gave me the opportunity to work with my wonderful advisers Kasra Alishahi, 
+      and Amin Gohari.<br><br>
+      I am broadly interested in machine learning theory and high dimensional statistics, 
+      particularly studying the behavior of overparameterized models. For more information 
+      take a glance at my <a href="/research">research agenda</a> or my 
+      <a href="/files/sample_cv.pdf">CV</a>.<br><br> 
+      I also started to write down some <a href="/posts">blog</a> posts about interesting mathematical phenomena in statistics and ML!
+    </p>
+  </section>
+  
   <section id="writing">
     <!-- TODO: use built in mainSections parameter https://gohugo.io/functions/where/#mainsections -->
     <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">Writings</a></span>
