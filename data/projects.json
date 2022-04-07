@@ -14,6 +14,16 @@
       "name": "Online Learning Through The Lens of Potential Descent",
       "url":"./files/Reading_Project_MLTheory2020_na2844_kns2110.pdf",
       "desc": "A note on blackwell approachability and it's aaplications to expert advice."
+    },
+    {
+      "name": "CLT for Empirical Transportation Cost in General Dimensions",
+      "url":"./filed/clt.pdf",
+      "desc": "A summary note on Del Bario's paper regarding how fast empirical transports converge to an arbitraty measure compared to their population version."
+    },
+    {
+      "name": "Boosting From a Theoretical Point of View",
+      "url": "./files/Boosting.pdf",
+      "desc": "Slides on boosting from a game theoretical perspective."
     }
   ]
 }
