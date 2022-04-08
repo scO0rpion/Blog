@@ -1,15 +1,14 @@
 ---
-title: What is Considered to be Random?
-author: Navid Ardeshir
+title: "What is Considered to be Random?"
+author: "Navid Ardeshir"
 date: '2020-08-16'
-categories:
-  - notes
 tags:
-  - Probability
-  - Hypothesis Testing
-  - Statistics
-  - Logic
-  - Philosophy
+- Probability
+- Hypothesis Testing
+- Statistics
+- Logic
+- Philosophy
+categories: notes
 ---
 
 We all have heard of prominent artists such as [Jackson Pollock](https://en.wikipedia.org/wiki/Jackson_Pollock) that at first sight on their work did not appreciate the complexity and level of intricacy in their pieces. One, without taste of art (and math!) might foolishly claim that they can reproduce similar patterns since there are actually none! It looks random. but what does "random" actually mean?^[A rigorous explanation can be found [here](https://www.maa.org/sites/default/files/pdf/upload_library/22/Ford/Volchan46-63.pdf)] A word that has been thrown around carelessly in daily life which contain variety of meanings. If you think about it really, it's not so obvious how to actually define "random" rigorously and it's been a matter of debate for a long time in probability theory. 
@@ -60,7 +59,6 @@ $$ \mathbb{E}[T_k] = 2^{k+1}-2 $$
 At this point, an interesting question would be whether this random variable is concentrated around it's mean or not? if so, how well? Apparently this does not seem to be true and $T_{k}$ tends to have a heavy tailed distribution.
 
 ```{r , echo=FALSE}
-
 gen_streak <- function(len) {
   cursor <- 0
   ref <- paste(rep(1, len), collapse="")
@@ -118,7 +116,7 @@ Note that $R_{n}$ consist of sums of $n-1$ independent random variables, and the
 $$ \frac{R_n - \mathbb{E}[R_n]}{Var(R_n)} = \frac{1}{\sqrt{n-1}}\sum_{t=2}^{n}{X_{t}X_{t-1}} \overset{n \mapsto \infty}{\longrightarrow} \mathcal{N}(0,1) $$
 
 Now, if we apply this test to the given sequences we observe that the latter looks to be significantly more random than the former which is counter-intuitive.
-```{r , echo=FALSE}
+```{r , echo=FALSE, warning=FALSE, message=FALSE}
 library(kableExtra)
 H <- 1
 T <- -1

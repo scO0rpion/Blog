@@ -1,15 +1,14 @@
 ---
-title: What is Considered to be Random?
-author: Navid Ardeshir
+title: "What is Considered to be Random?"
+author: "Navid Ardeshir"
 date: '2020-08-16'
-categories:
-  - notes
 tags:
-  - Probability
-  - Hypothesis Testing
-  - Statistics
-  - Logic
-  - Philosophy
+- Probability
+- Hypothesis Testing
+- Statistics
+- Logic
+- Philosophy
+categories: notes
 ---
 
 <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
@@ -69,8 +68,7 @@ With initial condition $T_{0} = 0 $ which has this solution:</p>
 <p><span class="math display">\[ R_{n} = 1 + \sum_{t=2}^{n}{\frac{1-X_{t}X_{t-1}}{2}} \]</span>
 Note that <span class="math inline">\(R_{n}\)</span> consist of sums of <span class="math inline">\(n-1\)</span> independent random variables, and therefore CLT can be applied. Subsequently, one can design a test to reject the null hypothesis <span class="math inline">\(H_0\)</span> when the following statistics is too large in absolute value and obtain a p-value.
 <span class="math display">\[ \frac{R_n - \mathbb{E}[R_n]}{Var(R_n)} = \frac{1}{\sqrt{n-1}}\sum_{t=2}^{n}{X_{t}X_{t-1}} \overset{n \mapsto \infty}{\longrightarrow} \mathcal{N}(0,1) \]</span></p>
-<p>Now, if we apply this test to the given sequences we observe that the latter looks to be significantly more random than the former which is counter-intuitive.</p>
-<pre><code>## Warning: package &#39;kableExtra&#39; was built under R version 3.6.2</code></pre>
+Now, if we apply this test to the given sequences we observe that the latter looks to be significantly more random than the former which is counter-intuitive.
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
