@@ -13,5 +13,4 @@ My main research interests lie in understanding generalization properties of ove
 [Support vector machines and linear regression coincide with very high-dimensional features](https://papers.nips.cc/paper/2021/file/26d4b4313a7e5828856bc0791fca39a2-Paper.pdf) \
   Navid Ardeshir\*, Clayton Sanford\*, Daniel Hsu. \
   In Advances in Neural Information Processing Systems 35. 2021.
-[[arxiv](https://arxiv.org/abs/2105.14084),[poster](/files/SVM_NeurIPS.pdf),[video](https://slideslive.com/38968209)]
-
+[[arxiv](https://arxiv.org/abs/2105.14084),[poster](/files/SVM_NeurIPS.pdf),[video](https://slideslive.com/38968209),[slides](/files/SVM=OLS.pdf)]
