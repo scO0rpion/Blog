@@ -14,3 +14,7 @@ My main research interests lie in understanding generalization properties of ove
   Navid Ardeshir\*, Clayton Sanford\*, Daniel Hsu. \
   In Advances in Neural Information Processing Systems 35. 2021.
 [[arxiv](https://arxiv.org/abs/2105.14084),[poster](/files/SVM_NeurIPS.pdf),[video](https://slideslive.com/38968209),[slides](/files/SVM=OLS.pdf)]
+
+[Instrinsic dimensionality and generalization properties of the $\mathcal{R}$-norm inductive bias](https://arxiv.org/pdf/2206.05317.pdf) \
+. Clayton Sanford\*, Navid Ardeshir\*, Daniel Hsu.
+[[arxiv](https://arxiv.org/pdf/2206.05317.pdf)]
