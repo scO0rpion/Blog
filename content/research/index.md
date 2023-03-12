@@ -17,8 +17,10 @@ In Advances in Neural Information Processing Systems 35. 2021. \
 
 [Instrinsic dimensionality and generalization properties of the $$\mathcal{R}$$-norm inductive bias](https://arxiv.org/pdf/2206.05317.pdf) \
 Clayton Sanford\*, Navid Ardeshir\*, Daniel Hsu. \
+Submitted for publication. 2022. \
 [[arxiv](https://arxiv.org/pdf/2206.05317.pdf), [poster](/files/poster.pdf), [slides](/files/R-norm.pdf)]
 
 [Group conditional validity via multi-group learning](https://arxiv.org/pdf/2303.03995.pdf) \
 Sam Deng\*, Navid Ardeshir\*, Daniel Hsu\*. \
+Submitted for publication. 2023. \
 [[arxiv](https://arxiv.org/pdf/2303.03995.pdf)]
