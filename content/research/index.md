@@ -20,5 +20,5 @@ Clayton Sanford\*, Navid Ardeshir\*, Daniel Hsu. \
 [[arxiv](https://arxiv.org/pdf/2206.05317.pdf), [poster](/files/poster.pdf), [slides](/files/R-norm.pdf)]
 
 [Group conditional validity via multi-group learning](https://arxiv.org/pdf/2303.03995.pdf) \
-Sam Deng, Navid Ardeshir, and Daniel Hsu. \
+Sam Deng\*, Navid Ardeshir\*, Daniel Hsu\*. \
 [[arxiv](https://arxiv.org/pdf/2303.03995.pdf)]
