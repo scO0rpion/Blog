@@ -23,4 +23,4 @@ Submitted for publication. 2022. \
 [Group conditional validity via multi-group learning](https://arxiv.org/pdf/2303.03995.pdf) \
 Sam Deng\*, Navid Ardeshir\*, Daniel Hsu\*. \
 Submitted for publication. 2023. \
-[[arxiv](https://arxiv.org/pdf/2303.03995.pdf)]
+[[arxiv](https://arxiv.org/pdf/2303.03995.pdf), [paper](/files/multigroup.pdf)]
